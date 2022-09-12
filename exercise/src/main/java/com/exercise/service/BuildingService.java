@@ -34,7 +34,7 @@ public class BuildingService implements IBuildingService {
 				String typeString = "";
 				
 				for (String s : lstType) {
-					typeString =  typeString + BuildingUtil.convertCodeToStringBuildingType(s) + ",";
+					typeString =  typeString + BuildingUtil.convertT(s) + ",";
 				}
 				buildingRes.setType(typeString);
 			} else {
