@@ -1,6 +1,7 @@
 package com.exercise.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.exercise.dao.BuildingDao;
 import com.exercise.dao.initial.BuildingInitial;
@@ -10,8 +11,13 @@ import com.exercise.service.BuildingService;
 
 public class BuildingController {
 	private BuildingService buildingService = new BuildingService();
-	public List<BuildingRes> getBuildings(BuildingReq buildingReq) {
-		List<BuildingRes> r = buildingService.getBuilding(buildingReq);
+//	public List<BuildingRes> getBuildings(BuildingReq buildingReq) {
+//		List<BuildingRes> r = buildingService.getBuilding(buildingReq);
+//		return r;
+//	}
+	
+	public List<BuildingRes> getBuildings(Map<String, String> data) {
+		List<BuildingRes> r = buildingService.getBuilding(data);
 		return r;
 	}
 }

@@ -1,8 +1,11 @@
 package com.exercise.dto.request;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BuildingReq {
 	
-
+	Map<String, String> phonebook = new HashMap<String, String>();
 	String name;
 	String street;
 	String district;

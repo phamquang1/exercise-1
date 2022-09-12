@@ -2,6 +2,7 @@ package com.exercise.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.exercise.dao.BuildingDao;
 import com.exercise.dao.initial.BuildingInitial;
@@ -15,9 +16,9 @@ public class BuildingService implements IBuildingService {
 	private BuildingDao buildingDao = new BuildingDao();
 
 	@Override
-	public List<BuildingRes> getBuilding(BuildingReq buildingReq) {
+	public List<BuildingRes> getBuilding(Map<String, String> data) {
 		// TODO Auto-generated method stub
-		List<BuildingInitial> buildings = buildingDao.getBuildings(buildingReq);
+		List<BuildingInitial> buildings = buildingDao.getBuildings(data);
 		List<BuildingRes> result = new ArrayList<BuildingRes>();
 		
 		for (BuildingInitial buildingInitial : buildings) {

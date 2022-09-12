@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.exercise.constant.SystemConstant;
 import com.exercise.dao.initial.BuildingInitial;
@@ -16,7 +17,7 @@ import com.exercise.utils.StringUtil;
 
 public class BuildingDao implements IBuildingDao {
 	@Override
-	public List<BuildingInitial> getBuildings(BuildingReq buildingRes) {
+	public List<BuildingInitial> getBuildings(Map<String, String> data) {
 		// TODO Auto-generated method stub
 		List<BuildingInitial> buildings = new ArrayList<BuildingInitial>();
 		Connection conn = null;
@@ -26,23 +27,23 @@ public class BuildingDao implements IBuildingDao {
 			StringBuilder query = new StringBuilder(
 					"SELECT * from building " + SystemConstant.WHERE_ONE_EQUAL_ONE + "");
 
-			if (!StringUtil.isNullOrEmpty(buildingRes.getName())) {
-				query.append(" and name like '%" + buildingRes.getName() + "%'");
+			if (!StringUtil.isNullOrEmpty(data.get("name"))) {
+				query.append(" and name like '%" + data.get("name") + "%'");
 			}
-			if (!StringUtil.isNullOrEmpty(buildingRes.getStreet())) {
-				query.append(" and street like '%" + buildingRes.getStreet() + "%'");
+			if (!StringUtil.isNullOrEmpty(data.get("street"))) {
+				query.append(" and street like '%" + data.get("street") + "%'");
 			}
-			if (!StringUtil.isNullOrEmpty(buildingRes.getDistrict())) {
-				query.append(" and district like '%" + buildingRes.getDistrict() + "%'");
+			if (!StringUtil.isNullOrEmpty(data.get("district"))) {
+				query.append(" and district like '%" + data.get("district") + "%'");
 			}
-			if (!StringUtil.isNullOrEmpty(buildingRes.getWard())) {
-				query.append(" and ward like '%" + buildingRes.getWard() + "%'");
+			if (!StringUtil.isNullOrEmpty(data.get("ward"))) {
+				query.append(" and ward like '%" + data.get("ward") + "%'");
 			}
-			if (buildingRes.getFlorrArea() != null) {
-				query.append(" and floorarea = " + buildingRes.getFlorrArea());
+			if (!StringUtil.isNullOrEmpty(data.get("floorarea"))) {
+				query.append(" and floorarea = " + Integer.parseInt(data.get("floorarea")));
 			}
-			if (!StringUtil.isNullOrEmpty(buildingRes.getType())) {
-				query.append(" and type like '%" + buildingRes.getType() + "%'");
+			if (!StringUtil.isNullOrEmpty(data.get("type"))) {
+				query.append(" and type like '%" + data.get("type") + "%'");
 			}
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
