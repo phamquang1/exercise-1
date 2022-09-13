@@ -32,10 +32,7 @@ public class BuildingService implements IBuildingService {
 
 			if (type != null && type != "") {
 
-				String[] lstType = type.split(",");
-				String typeString = null;
-
-				typeString = this.convertTypeBuilding(lstType);
+				String typeString = this.convertTypeBuilding(type);
 				buildingRes.setType(typeString.toString());
 			} else {
 				buildingRes.setType("");
@@ -48,10 +45,11 @@ public class BuildingService implements IBuildingService {
 
 		return result;
 	}
-	private String convertTypeBuilding(String[] types) {
+	private String convertTypeBuilding(String type) {
 		Map<String, String> defaultType = BuildingUtil.defaultType();
 		StringBuilder typeString = new StringBuilder();
-		for (String string : types) {
+		String[] lstType = type.split(",");
+		for (String string : lstType) {
 			typeString.append(defaultType.getOrDefault(string, ""));
 		}
 		return typeString.toString();
