@@ -22,31 +22,36 @@ public class BuildingService implements IBuildingService {
 		List<BuildingRes> result = new ArrayList<BuildingRes>();
 		Map<String, String> defaultType = BuildingUtil.defaultType();
 		for (BuildingInitial buildingInitial : buildings) {
-			
-			BuildingRes buildingRes = new BuildingRes();
 
-			if (buildingInitial.getType() != null && buildingInitial.getType() != "") {
-				
-				String type = buildingInitial.getType();
-				
+			BuildingRes buildingRes = new BuildingRes();
+			Long id = buildingInitial.getId();
+			String name = buildingInitial.getName();
+			String street = buildingInitial.getStreet();
+			String district = buildingInitial.getDistrict();
+			String ward = buildingInitial.getWard();
+			String type = buildingInitial.getType();
+
+			if (type != null && type != "") {
+
 				String[] lstType = type.split(",");
-				
+
 				StringBuilder typeString = new StringBuilder();
-				
+
 				for (String s : lstType) {
-					typeString.append(defaultType.containsKey(s) ? defaultType.get(s) + ", " : "");
+					String convertType = defaultType.containsKey(s) ? defaultType.get(s) + ", " : "";
+					typeString.append(convertType);
 				}
 				System.out.println(typeString.toString());
 				buildingRes.setType(typeString.toString());
 			} else {
 				buildingRes.setType("");
 			}
-			buildingRes.setId(buildingInitial.getId());
-			buildingRes.setName(buildingInitial.getName());
-			buildingRes.setAddress(buildingInitial.getStreet() + ", " + buildingInitial.getDistrict() + ", " + buildingInitial.getWard() + ", ");
+			buildingRes.setId(id);
+			buildingRes.setName(name);
+			buildingRes.setAddress(street + ", " + district + ", " + ward + ", ");
 			result.add(buildingRes);
 		}
-		
+
 		return result;
 	}
 }
