@@ -20,7 +20,6 @@ public class BuildingService implements IBuildingService {
 		// TODO Auto-generated method stub
 		List<BuildingInitial> buildings = buildingDao.getBuildings(data);
 		List<BuildingRes> result = new ArrayList<BuildingRes>();
-//		Map<String, String> defaultType = BuildingUtil.defaultType();
 		for (BuildingInitial buildingInitial : buildings) {
 
 			BuildingRes buildingRes = new BuildingRes();
@@ -36,13 +35,6 @@ public class BuildingService implements IBuildingService {
 				String[] lstType = type.split(",");
 				String typeString = null;
 
-//				StringBuilder typeString = new StringBuilder();
-//
-//				for (String s : lstType) {
-//					String convertType = defaultType.containsKey(s) ? defaultType.get(s) + ", " : "";
-//					typeString.append(convertType);
-//				}
-//				System.out.println(typeString.toString());
 				typeString = this.convertTypeBuilding(lstType);
 				buildingRes.setType(typeString.toString());
 			} else {
@@ -60,7 +52,7 @@ public class BuildingService implements IBuildingService {
 		Map<String, String> defaultType = BuildingUtil.defaultType();
 		StringBuilder typeString = new StringBuilder();
 		for (String string : types) {
-			typeString.append(defaultType.containsKey(string) ? defaultType.get(string) + ", " : "");
+			typeString.append(defaultType.getOrDefault(string, ""));
 		}
 		return typeString.toString();
 	}
