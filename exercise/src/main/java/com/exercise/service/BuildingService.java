@@ -16,11 +16,11 @@ public class BuildingService implements IBuildingService {
 	private BuildingDao buildingDao = new BuildingDao();
 
 	@Override
-	public List<BuildingRes> getBuilding(Map<String, String> data) {
+	public List<BuildingRes> getBuilding(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		List<BuildingInitial> buildings = buildingDao.getBuildings(data);
 		List<BuildingRes> result = new ArrayList<BuildingRes>();
-		
+		Map<String, String> defaultType = BuildingUtil.defaultType();
 		for (BuildingInitial buildingInitial : buildings) {
 			
 			BuildingRes buildingRes = new BuildingRes();
@@ -31,12 +31,13 @@ public class BuildingService implements IBuildingService {
 				
 				String[] lstType = type.split(",");
 				
-				String typeString = "";
+				StringBuilder typeString = new StringBuilder();
 				
 				for (String s : lstType) {
-					typeString =  typeString + BuildingUtil.convertT(s) + ",";
+					typeString.append(defaultType.containsKey(s) ? defaultType.get(s) + ", " : "");
 				}
-				buildingRes.setType(typeString);
+				System.out.println(typeString.toString());
+				buildingRes.setType(typeString.toString());
 			} else {
 				buildingRes.setType("");
 			}

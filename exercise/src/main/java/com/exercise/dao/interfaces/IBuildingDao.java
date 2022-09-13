@@ -7,5 +7,5 @@ import com.exercise.dao.initial.BuildingInitial;
 import com.exercise.dto.request.BuildingReq;
 
 public interface IBuildingDao {
-	List<BuildingInitial> getBuildings(Map<String, String> data);
+	List<BuildingInitial> getBuildings(Map<String, Object> data);
 }

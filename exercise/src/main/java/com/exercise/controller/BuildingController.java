@@ -16,7 +16,7 @@ public class BuildingController {
 //		return r;
 //	}
 	
-	public List<BuildingRes> getBuildings(Map<String, String> data) {
+	public List<BuildingRes> getBuildings(Map<String, Object> data) {
 		List<BuildingRes> r = buildingService.getBuilding(data);
 		return r;
 	}

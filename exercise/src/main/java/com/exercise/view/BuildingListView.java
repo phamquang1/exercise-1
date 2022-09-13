@@ -11,7 +11,7 @@ import com.exercise.dto.response.BuildingRes;
 public class BuildingListView {
 	public static void main(String[] args) {
 
-		Map<String, String> data = new HashMap<String, String>();
+		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("name", null);
 		data.put("street", null);
 		data.put("district", null);

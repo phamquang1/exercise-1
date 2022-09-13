@@ -7,5 +7,5 @@ import com.exercise.dto.request.BuildingReq;
 import com.exercise.dto.response.BuildingRes;
 
 public interface IBuildingService {
-	List<BuildingRes> getBuilding(Map<String, String> data);
+	List<BuildingRes> getBuilding(Map<String, Object> data);
 }
